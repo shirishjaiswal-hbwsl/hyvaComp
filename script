@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Output directory for screenshots
+output_dir="/home/shirishjaiswal/Pictures/"
+
+# Duration in seconds (30 minutes = 1800 seconds)
+duration=1800
+
+# Interval for taking screenshots in seconds (15 seconds)
+interval=15
+
+# Create the output directory if it doesn't exist
+mkdir -p "$output_dir"
+
+# Calculate the number of iterations
+iterations=$((duration / interval))
+
+# Loop to take screenshots
+for ((i = 0; i < iterations; i++)); do
+    timestamp=$(date +"%Y%m%d_%H%M%S")
+    filename="$output_dir/screenshot_$timestamp.png"
+
+    # Take screenshot using scrot
+    scrot "$filename"
+
+    # Check if the screenshot was saved successfully
+    if [ $? -eq 0 ]; then
+        echo ""
+    else
+        echo ""
+    fi
+
+    # Sleep for the specified interval
+    sleep $interval
+done
+
+echo ""
+
